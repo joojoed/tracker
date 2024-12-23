@@ -7,7 +7,7 @@ document.getElementById('data-entry-form').addEventListener('submit', function(e
 
     // Example method to send data to Google Sheets
     // You need to replace with the specific API call and credentials
-    fetch('https://script.google.com/macros/s/AKfycbyobuL4TqzTUKlk9YT65LFTJTqhqJ88vJdb7ulQtOUb2sBGb6EAC9pJ0haC_mAJCPZi/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyVfHRXIxAACSu-cp7RcElG4E-_vRo4JAlKqO0VfMEANK-k5f-MIkEd0xEvCp2xJ9gq/exec', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
