@@ -3,7 +3,7 @@ let dataList = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch data from Google Sheets
-    fetch('YOUR_GOOGLE_SHEET_API_URL')
+    fetch('https://script.google.com/macros/s/AKfycby5ZOmIbknT-yougJd7ayYHjfw2wSfXwvPYjLqiF_sz7DeH8qugdPmyD8KUKEQrQ2O5/exec')
         .then(response => response.json())
         .then(data => {
             // Skip header row
