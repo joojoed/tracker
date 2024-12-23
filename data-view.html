@@ -8,7 +8,7 @@
         body { font-family: Arial, sans-serif; }
         .form-view { max-width: 400px; margin: auto; text-align: center; }
         .form-view div { margin: 10px 0; }
-        input, button { padding: 10px; margin: 5px 0; }
+        input, button, textarea { width: 100%; padding: 10px; margin: 5px 0; }
         .hidden { display: none; }
     </style>
 </head>
@@ -26,9 +26,9 @@
         </div>
 
         <div id="editArea" class="hidden">
-            <input type="text" id="editName">
-            <input type="text" id="editEmail">
-            <textarea id="editMessage"></textarea>
+            <input type="text" id="editName" placeholder="Name">
+            <input type="text" id="editEmail" placeholder="Email">
+            <textarea id="editMessage" placeholder="Message"></textarea>
             <button id="saveButton">Save</button>
             <button id="cancelButton">Cancel</button>
         </div>
