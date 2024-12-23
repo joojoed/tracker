@@ -1,5 +1,5 @@
 // Fetch data from the Google Sheet
-fetch('https://script.google.com/macros/s/AKfycbyobuL4TqzTUKlk9YT65LFTJTqhqJ88vJdb7ulQtOUb2sBGb6EAC9pJ0haC_mAJCPZi/exec')
+fetch('https://script.google.com/macros/s/AKfycby5ZOmIbknT-yougJd7ayYHjfw2wSfXwvPYjLqiF_sz7DeH8qugdPmyD8KUKEQrQ2O5/exec')
     
     .then(response => response.json())
     .then(data => {
