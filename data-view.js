@@ -33,6 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = 0;
         displayEntry(currentIndex);
     });
+
+    document.getElementById('editButton').addEventListener('click', () => {
+        enterEditMode();
+    });
+
+    document.getElementById('cancelButton').addEventListener('click', () => {
+        exitEditMode();
+    });
+
+    document.getElementById('saveButton').addEventListener('click', () => {
+        saveChanges();
+    });
 });
 
 function displayEntry(index) {
@@ -41,9 +53,60 @@ function displayEntry(index) {
         document.getElementById('name').textContent = `Name: ${entry[0]}`;
         document.getElementById('email').textContent = `Email: ${entry[1]}`;
         document.getElementById('message').textContent = `Message: ${entry[2]}`;
+        exitEditMode(); // Ensure the display mode is active upon navigation
     } else {
         document.getElementById('name').textContent = 'No data available';
         document.getElementById('email').textContent = '';
         document.getElementById('message').textContent = '';
     }
+}
+
+function enterEditMode() {
+    const entry = filteredList[currentIndex];
+    document.getElementById('editName').value = entry[0];
+    document.getElementById('editEmail').value = entry[1];
+    document.getElementById('editMessage').value = entry[2];
+
+    document.getElementById('displayArea').classList.add('hidden');
+    document.getElementById('editArea').classList.remove('hidden');
+}
+
+function exitEditMode() {
+    document.getElementById('displayArea').classList.remove('hidden');
+    document.getElementById('editArea').classList.add('hidden');
+}
+
+function saveChanges() {
+    const updatedEntry = [
+        document.getElementById('editName').value,
+        document.getElementById('editEmail').value,
+        document.getElementById('editMessage').value
+    ];
+
+    // Update the local filteredList and dataList
+    filteredList[currentIndex] = updatedEntry;
+    const originalIndex = dataList.findIndex(entry => entry[0] === filteredList[currentIndex][0]);
+    if (originalIndex !== -1) {
+        dataList[originalIndex] = updatedEntry;
+    }
+
+    // Send updated entry back to the server (Google Sheets)
+    fetch('YOUR_GOOGLE_APPS_SCRIPT_UPDATE_URL', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            originalIndex,
+            updatedEntry
+        }),
+    }).then(response => response.json())
+      .then(data => {
+          if (data.status === 'success') {
+              alert('Changes saved successfully');
+              displayEntry(currentIndex);
+          } else {
+              alert('Failed to save changes');
+          }
+      }).catch(error => console.error('Error saving changes:', error));
 }
