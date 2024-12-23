@@ -3,12 +3,11 @@ let dataList = [];
 let filteredList = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch data from Google Sheets
     fetch('https://script.google.com/macros/s/AKfycbw9Iv1HQPZCXdOf2NuyOSD2WwLPYDPs5HTjXMa2Lj3iUfDOa2b5cSQz3l6WL-p8sK5p/exec')
         .then(response => response.json())
         .then(data => {
-            dataList = data.slice(1); // Skip the header row
-            filteredList = [...dataList]; // Initialize filteredList
+            dataList = data.slice(1);
+            filteredList = [...dataList];
             displayEntry(currentIndex);
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -83,14 +82,12 @@ function saveChanges() {
         document.getElementById('editMessage').value
     ];
 
-    // Update the local filteredList and dataList
     filteredList[currentIndex] = updatedEntry;
     const originalIndex = dataList.findIndex(entry => entry[0] === filteredList[currentIndex][0]);
     if (originalIndex !== -1) {
         dataList[originalIndex] = updatedEntry;
     }
 
-    // Send updated entry back to the server (Google Sheets)
     fetch('YOUR_GOOGLE_APPS_SCRIPT_UPDATE_URL', {
         method: 'POST',
         headers: {
