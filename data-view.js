@@ -3,7 +3,7 @@ let dataList = [];
 let filteredList = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://script.google.com/macros/s/AKfycbw9Iv1HQPZCXdOf2NuyOSD2WwLPYDPs5HTjXMa2Lj3iUfDOa2b5cSQz3l6WL-p8sK5p/exec')
+    fetch('https://script.google.com/macros/s/AKfycbwQD5GG-30YtpXS-t5QDpam26YE347qRz3uPMyVa4aId5SEGBCqmJIJy2HQ9eQUFaup/exec')
         .then(response => response.json())
         .then(data => {
             dataList = data.slice(1);
@@ -88,7 +88,7 @@ function saveChanges() {
         dataList[originalIndex] = updatedEntry;
     }
 
-    fetch('https://script.google.com/macros/s/AKfycbw9Iv1HQPZCXdOf2NuyOSD2WwLPYDPs5HTjXMa2Lj3iUfDOa2b5cSQz3l6WL-p8sK5p/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwQD5GG-30YtpXS-t5QDpam26YE347qRz3uPMyVa4aId5SEGBCqmJIJy2HQ9eQUFaup/exec', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
