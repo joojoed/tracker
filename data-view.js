@@ -88,7 +88,7 @@ function saveChanges() {
         dataList[originalIndex] = updatedEntry;
     }
 
-    fetch('YOUR_GOOGLE_APPS_SCRIPT_UPDATE_URL', {
+    fetch('https://script.google.com/macros/s/AKfycbw9Iv1HQPZCXdOf2NuyOSD2WwLPYDPs5HTjXMa2Lj3iUfDOa2b5cSQz3l6WL-p8sK5p/exec', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
